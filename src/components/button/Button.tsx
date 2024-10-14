@@ -8,7 +8,8 @@ interface IButtonProps {
   props: {
     style: "blue" | "white" | "grey" | "green" | "red";
     text: string;
-    onClick: (
+    type: "submit" | "reset" | "button" | undefined;
+    onClick?: (
       text?: string,
       url?: string,
     ) => void | ReactElement | Window | null;
@@ -16,16 +17,16 @@ interface IButtonProps {
 }
 
 export default function Button({ props }: IButtonProps): ReactElement | null {
-  const { style, text, onClick } = props;
+  const { style, text, type, onClick } = props;
 
   const handleClick: () => void = (): void => {
-    onClick(text);
+    if (onClick) onClick(text);
   };
 
   const className = `${style}Button`;
 
   return (
-    <button className={className} onClick={handleClick}>
+    <button className={className} onClick={handleClick} type={type}>
       {text}
     </button>
   );

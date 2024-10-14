@@ -52,6 +52,27 @@
   gap: 2em;
 }
 
+.tableWrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 2em;
+}
+
+.asnaExampleWrapper {
+  display: flex;
+  justify-content: center;
+  width: 10%;
+}
+
+.asnaExampleWrapper #NRTL table {
+  width: 100%;
+}
+
+.asnaExampleWrapper #NRTL tbody tr:last-child td {
+  border-radius: 0 0 10px 10px !important;
+}
+
 .headerWrapper {
   width: 100%;
   display: flex;
