@@ -46,6 +46,7 @@ export default function Header({ props }: IHeaderProps): ReactElement {
               props={{
                 style: "blue",
                 text: "Aide",
+                type: "button",
                 onClick: (): Window => openHelpDoc("/"),
               }}
             />

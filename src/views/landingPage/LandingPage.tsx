@@ -14,12 +14,15 @@ import Select from "react-select"; // https://www.npmjs.com/package/react-select
 import Header from "../../components/header/Header";
 import Button from "../../components/button/Button";
 import Form from "../../components/form/Form";
+import MenuContainer from "../../components/menu/MenuContainer";
+import Footer from "../../components/footer/Footer";
 
 // mockup
 import {
   asnaExample,
   tableDatas,
 } from "../../utils/mockup/tableDemoContent.tsx";
+import { demoMenuData } from "../../utils/mockup/menuDemoContent.tsx";
 
 export default function LandingPage(): ReactElement {
   const [isComponentDisplayed, setIsComponentDisplayed] =
@@ -101,34 +104,40 @@ export default function LandingPage(): ReactElement {
                       key: "email",
                       type: "email",
                       placeholder: "ex: decressac.nicolas@icloud.com",
+                      required: true,
                     },
                     {
                       label: "Prénom :",
                       key: "firstName",
                       type: "text",
                       placeholder: "ex: Nicolas",
+                      required: true,
                     },
                     {
                       label: "Date de naissance :",
                       key: "birthDate",
                       type: "date",
+                      required: true,
                     },
                     {
                       label: "Code TO :",
                       key: "matricule",
                       type: "number",
                       placeholder: "ex: 6176",
+                      required: true,
                     },
                     {
                       label: "Mot de passe TO :",
                       key: "password",
                       type: "password",
                       placeholder: "ex: decnic",
+                      required: true,
                     },
                     {
                       label: "CV :",
                       key: "file",
                       type: "file",
+                      required: false,
                     },
                   ],
                   isWithSubmitButton: true,
@@ -142,6 +151,7 @@ export default function LandingPage(): ReactElement {
                     key: "siret",
                     type: "text",
                     placeholder: "ex: 71283467876",
+                    required: true,
                   },
                   isWithSubmitButton: false,
                 }}
@@ -176,6 +186,12 @@ export default function LandingPage(): ReactElement {
               </div>
             </div>
           );
+        case "Menu":
+          return (
+            <div className={"menuWrapper"}>
+              <MenuContainer menuData={demoMenuData} />
+            </div>
+          );
         case "Header":
           return (
             <div className={"headerWrapper"}>
@@ -191,6 +207,12 @@ export default function LandingPage(): ReactElement {
                   helpBtn: false,
                 }}
               />
+            </div>
+          );
+        case "Footer":
+          return (
+            <div className={"footerWrapper"}>
+              <Footer />
             </div>
           );
         case "Select":
@@ -222,9 +244,11 @@ export default function LandingPage(): ReactElement {
           </li>
           <li onClick={(): void => handleComponentChange("Table")}>Tableau</li>
           <li onClick={(): void => handleComponentChange("Select")}>
-            Selecteur
+            Sélecteur
           </li>
+          <li onClick={(): void => handleComponentChange("Menu")}>Menu</li>
           <li onClick={(): void => handleComponentChange("Header")}>Header</li>
+          <li onClick={(): void => handleComponentChange("Footer")}>Footer</li>
         </ul>
       </nav>
       <section id={"componentContainer"}>

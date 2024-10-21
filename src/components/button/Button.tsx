@@ -9,6 +9,7 @@ interface IButtonProps {
     style: "blue" | "white" | "grey" | "green" | "red";
     text: string;
     type: "submit" | "reset" | "button" | undefined;
+    disabled?: boolean;
     onClick?: (
       text?: string,
       url?: string,
@@ -17,7 +18,7 @@ interface IButtonProps {
 }
 
 export default function Button({ props }: IButtonProps): ReactElement | null {
-  const { style, text, type, onClick } = props;
+  const { style, text, type, disabled, onClick } = props;
 
   const handleClick: () => void = (): void => {
     if (onClick) onClick(text);
@@ -26,7 +27,12 @@ export default function Button({ props }: IButtonProps): ReactElement | null {
   const className = `${style}Button`;
 
   return (
-    <button className={className} onClick={handleClick} type={type}>
+    <button
+      className={className}
+      onClick={handleClick}
+      type={type}
+      disabled={disabled}
+    >
       {text}
     </button>
   );
