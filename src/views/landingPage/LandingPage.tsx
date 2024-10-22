@@ -15,6 +15,7 @@ import Header from "../../components/header/Header";
 import Button from "../../components/button/Button";
 import Form from "../../components/form/Form";
 import MenuContainer from "../../components/menu/MenuContainer";
+import AlertBox from "../../components/alertBox/AlertBox";
 import Footer from "../../components/footer/Footer";
 
 // mockup
@@ -29,6 +30,7 @@ export default function LandingPage(): ReactElement {
     useState<boolean>(false);
   const [componentName, setComponentName] = useState<string>("");
   const [demoMessage, setDemoMessage] = useState<string>("");
+  const [alertMessage, setAlertMessage] = useState<string>("");
 
   const handleComponentChange: (name: string) => void = (
     name: string,
@@ -228,6 +230,23 @@ export default function LandingPage(): ReactElement {
               />
             </div>
           );
+        case "Alert":
+          return (
+            <div className={"triggerModalWrapper"}>
+              <Button
+                props={{
+                  style: "blue",
+                  text: "Afficher l'alerte",
+                  type: "button",
+                  onClick: (): void =>
+                    setAlertMessage("Démonstration de l'alerte !"),
+                }}
+              />
+              {alertMessage && (
+                <AlertBox message={alertMessage} setMessage={setAlertMessage} />
+              )}
+            </div>
+          );
         default:
           return null;
       }
@@ -247,6 +266,7 @@ export default function LandingPage(): ReactElement {
             Sélecteur
           </li>
           <li onClick={(): void => handleComponentChange("Menu")}>Menu</li>
+          <li onClick={(): void => handleComponentChange("Alert")}>Alerte</li>
           <li onClick={(): void => handleComponentChange("Header")}>Header</li>
           <li onClick={(): void => handleComponentChange("Footer")}>Footer</li>
         </ul>

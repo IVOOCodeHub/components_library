@@ -1,4 +1,7 @@
 header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0 5em;
   width: 100%;
   background: #ffffff;
@@ -6,8 +9,12 @@ header {
   min-height: 10dvh;
   max-height: 10dvh;
 
+  @media (max-width: 1024px) {
+  }
+
   @media (max-width: 768px) {
-    padding: 0 2em;
+    padding: 2em;
+    max-height: unset;
   }
 }
 
@@ -15,6 +22,12 @@ header nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    flex-flow: column;
+    gap: 1em;
+  }
 }
 
 header nav h1 {
@@ -22,11 +35,13 @@ header nav h1 {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  font-size: 1.8dvw;
+  font-size: 100%;
   font-weight: 700;
   text-transform: uppercase;
 
   @media (max-width: 768px) {
+    position: unset;
+    transform: unset;
     font-size: 20px;
   }
 }
